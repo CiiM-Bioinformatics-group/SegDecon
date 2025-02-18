@@ -1,3 +1,0 @@
-# SegDecon
-AI-powered nuclei segmentation enhances histological image process and Spatial Transcriptomics deconvolution
-Spatial transcriptomics (ST) enables spatially resolved gene expression profiling but is often limited by low resolution. To address this, we introduce SegDecon, an AI-powered pipeline that enhances tissue segmentation using histology color data and refines cell-type estimates with cell count-informed deconvolution. Validated on high-resolution datasets, SegDecon outperforms existing methods and is available at . Beyond deconvolution, it supports broader applications in nuclei and cell segmentation-based analyses.
