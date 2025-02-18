@@ -6,7 +6,7 @@ Spatial transcriptomics (ST) enables spatially resolved gene expression profilin
 
 # Pipeline
 
-This repository contains the code for processing, segmenting, and analyzing spatial transcriptomics data using deep learning models like Stardist and deconvolution methods like Cell2location.
+This repository contains code for processing (denoising H&E images), segmenting nuclei, deconvoluting spatial transcriptomics data, and integrating real cell counts into the deconvolution results. The segmentation process utilizes deep learning models such as *Stardist*, while deconvolution is performed using methods like *cell2location*.
 
 # Tutorials
 The tutorial covers all aspects of pipeline and has clearer explanations. It is recommended to refer to the tutorial for SegDecon.
