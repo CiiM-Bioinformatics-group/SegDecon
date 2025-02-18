@@ -26,7 +26,7 @@ upper_color = np.array([162, 207, 211])  # Upper noise limits of H, S, V
 Default replacement color is:  
 replacement_color = np.array([160, 115, 250], dtype=np.uint8)    
 
-To accommodate diverse datasets, SegDecon provides a KMeans-based method for dynamically determining the optimal hue threshold.(`kmeans_noise_filter.py` or the notebook :). This approach clusters pixel colors into different groups and selects the cluster corresponding to noise artifacts. However, for precise noise removal, a hybrid approach is recommended, where the manually selected thresholds are refined by taking the union of hue values from at least **ten** representative noise pixels. This combined strategy ensures more accurate and dataset-specific noise suppression while maintaining robust segmentation performance.
+To accommodate diverse datasets, SegDecon provides a KMeans-based method for dynamically determining the optimal hue threshold.(`kmeans_noise_filter.py` or the tutorial:[tutorial of kmeans noise filter](tutorial/01_1kmeans_noise_filter.ipynb)). This approach clusters pixel colors into different groups and selects the cluster corresponding to noise artifacts. However, for precise noise removal, a hybrid approach is recommended, where the manually selected thresholds are refined by taking the union of hue values from at least **ten** representative noise pixels. This combined strategy ensures more accurate and dataset-specific noise suppression while maintaining robust segmentation performance.
 
 - **KMeans-based method**: `kmeans_noise_filter.py`
 
