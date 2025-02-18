@@ -63,7 +63,7 @@ SegDecon/Pipeline/postprocess.py
 
 ## Results
 
-The processed and analyzed data will be saved in the `data/` folder, including:
+After running the whole pipeline, the processed and analyzed data will be saved in the `data/` folder, including:
 - `deconvolution_input.h5ad`
 - `deconvolution_output.h5ad`
 - `segdecon_results.h5ad`
