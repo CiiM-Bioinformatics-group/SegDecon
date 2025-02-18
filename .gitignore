@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+*.venv
+*.env
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Logs and temp files
+logs/
+*.log
+.DS_Store
+
+# Anndata files
+*.h5ad
+*.csv
+*.tsv
+*.txt
+
+# Config files
+.envrc
