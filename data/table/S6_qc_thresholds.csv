@@ -1,0 +1,31 @@
+threshold_name,value,rationale,applied_to
+um_per_px,0.5 um/px,Use vendor scale; all geometry computed in micrometres.,global_geometry
+expected_nucleus_diam_um,10 um,Approximate nuclear scale; drives resolution-aware morphology.,segmentation_preproc
+tissue_min_obj_area_um2,400 um2,Remove small tissue fragments to stabilize the tissue mask.,segmentation_preproc
+morph_close_radius,derived_from(expected_nucleus_diam_um),Smooth tissue boundaries; avoid fragmented masks.,segmentation_preproc
+hue_clip_percentiles,"[5,95]",Suppress extreme color drift for robust threshold search.,segmentation_preproc
+artifact_target_area_fraction,"[0.005,0.30]",Keep artifact-mask area within a plausible range.,segmentation_preproc
+artifact_threshold_strategy,auto(Yen/Triangle/Otsu)+quantile_fallback,Fallback to quantiles if auto thresholds miss the target.,segmentation_preproc
+tiny_component_min_area_factor,0.35*expected_nuclear_area,Remove fragments/small nuclei; reduce false positives.,segmentation_preproc
+background_q_width,0.30,Define 'pink band' width for background homogenization.,segmentation_preproc
+k_S_MAD,2.0,Robust range for S channel using MAD multipliers.,segmentation_preproc
+k_V_MAD,2.0,Robust range for V channel using MAD multipliers.,segmentation_preproc
+nucleus_dilate_px,0,No nuclear-margin dilation by default; AB04 showed worse error.,segmentation_preproc
+stardist_model,pretrained_2D,Same model across datasets; no per-dataset tuning.,segmentation_infer
+posthoc_area_min,50 um2,Remove tiny debris after inference.,instance_postfilter
+posthoc_area_max,2000 um2,Remove oversized merged objects after inference.,instance_postfilter
+tile_roi_size,3000x3000 px,Standardize ROI size for matched evaluation.,evaluation_setup
+tile_size,500x500 px,6x6 grid yields 36 tiles per slide.,evaluation_setup
+tile_grid,6x6,Matches figures and analysis protocol.,evaluation_setup
+gt_counting_rule,manual_click_centroids,Manual nucleus centers as ground truth; evaluation only.,evaluation_gt
+assign_pred_to_tile,by_centroid,Assign predicted instances to tiles by centroid.,evaluation_metrics
+abs_error_metric,|pred-gt| (nuclei/tile),Primary counting error used in the paper.,evaluation_metrics
+bland_altman,mean_bias and 95% LoA,Agreement readout (difference vs mean).,evaluation_metrics
+stat_test,paired Wilcoxon with Holm correction,Paired comparisons with multiple-testing control.,evaluation_stats
+hass_components,"SAF,P95_norm,EOI,BPI,TDI",Five interpretable components; standardized then averaged.,hass_definition
+hass_levels,within-slide quintiles (1-5),Five-level noise ladder per slide.,hass_definition
+spot_mapping_radius,45 um,Effective capture radius for image-side counting only; gene counts unchanged.,mapping_spots
+spot_intersection_rule,positive-area; tiebreak=max_overlap,"If a nucleus intersects two discs, assign by larger overlap.",mapping_spots
+prior_moments_source,slide-wide (default) or ROI-specific (regional analysis),Gamma prior via moment matching; likelihood unchanged.,deconvolution_prior
+hd_cell_area_filter,"(50,2000) um2",Area bounds for HD nuclei when building cell-level profiles (evaluation reference).,hd_reconstruction
+hd_umi_min,50 counts,Minimum UMI per nucleus for HD cell reconstruction (evaluation reference).,hd_reconstruction
