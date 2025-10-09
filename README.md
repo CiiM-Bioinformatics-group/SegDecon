@@ -13,22 +13,18 @@ The tutorial covers all aspects of pipeline and has clearer explanations. It is 
 
 ## Pipeline Overview
 
-1. **Preprocessing and Segmentation** (`denoising_and_segmentation.py`)
+1. **Preprocessing for Segmentation** (`histology_segmentation_stack.py`)
    - Download and preprocess tissue images.
    - Perform nuclei segmentation using Stardist.
-> *Note: Here, we provide **3** methods to set the noise mask: **default**, **KMeans-based** and **manually set**.*
+> *Note: Here, all parameter is default.*
 
 - **Default**:
-here default noise mask is:  
-lower_color = np.array([154, 137, 107])  # Lower noise limits of H, S, V
-upper_color = np.array([162, 207, 211])  # Upper noise limits of H, S, V
+all default parameter showed in `histology_segmentation_stack.py`.
 
-Default replacement color is:  
-replacement_color = np.array([160, 115, 250], dtype=np.uint8)    
 
-To accommodate diverse datasets, SegDecon provides a KMeans-based method for dynamically determining the optimal hue threshold.(`kmeans_noise_filter.py` or the tutorial:[tutorial of kmeans noise filter](tutorial/01_1kmeans_noise_filter.ipynb)). This approach clusters pixel colors into different groups and selects the cluster corresponding to noise artifacts. However, for precise noise removal, a hybrid approach is recommended, where the manually selected thresholds are refined by taking the union of hue values from at least **ten** representative noise pixels. This combined strategy ensures more accurate and dataset-specific noise suppression while maintaining robust segmentation performance.
+To accommodate diverse datasets, SegDecon provides a KMeans-based method for dynamically determining the optimal hue threshold.(`histology_segmentation_stack.py` or the tutorial:[tutorial of kmeans noise filter](tutorial/01_1kmeans_noise_filter.ipynb)). This approach clusters pixel colors into different groups and selects the cluster corresponding to noise artifacts. However, for precise noise removal, a hybrid approach is recommended, where the manually selected thresholds are refined by taking the union of hue values from at least **ten** representative noise pixels. This combined strategy ensures more accurate and dataset-specific noise suppression while maintaining robust segmentation performance.
 
-- **KMeans-based method**: `kmeans_noise_filter.py`
+- **histology segementation stack**: `histology_segmentation_stack.py`
 
 The comparison of segmentation effects after segdecon denoising is as follows：  
 ![Segmentationeffect](images/predict.png)  VS.
