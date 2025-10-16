@@ -2,7 +2,7 @@
 """
 SegDecon — Histology Image Processing & Nuclei Segmentation (Refactor)
 ---------------------------------------------------------------------
-This is a **pure refactor** of the user-provided notebook cells into a clean, importable pipeline.
+This is a **pure refactor** of the related notebook cells into a clean, importable pipeline.
 Logic and default parameter values are preserved. The file exposes:
 
 - Utility functions: ensure_uint8, as_rgb, show, adaptive_kernel_px
@@ -519,7 +519,7 @@ python segdecon_histology_pipeline.py /data/HE_slide.tif \
   --save_json run_info.json
 
 #2. python
-from segdecon_histology_pipeline import run_pipeline
+from segdecon_histology_stack import run_pipeline
 
 out = run_pipeline(
     image_path="/path/to/your_image.tif",   # 
